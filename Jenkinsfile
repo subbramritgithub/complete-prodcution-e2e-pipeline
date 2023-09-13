@@ -11,7 +11,7 @@ pipeline{
         DOCKER_PASS = 'docker-token'
         IMAGE_NAME = "${subbuengineering}" + "/" + "${docker-jenkins}"
         IMAGE_TAG = "${RELEASE}-${7155243}"
-        JENKINS_API_TOKEN = credentials("1195ad75c7c27334fa10ee3f64c0de59d9")
+        JENKINS_API_TOKEN = credentials("jenkins-api-token")
 
     }
     stages{
