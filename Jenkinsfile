@@ -4,6 +4,16 @@ pipeline{
         jdk 'Java17'
         maven 'Maven3'
     }
+    environment {
+        APP_NAME = "complete-prodcution-e2e-pipeline"
+        RELEASE = "1.0.0"
+        DOCKER_USER = "subbuengineering"
+        DOCKER_PASS = 'docker-token'
+        IMAGE_NAME = "${subbuengineering}" + "/" + "${docker-jenkins}"
+        IMAGE_TAG = "${RELEASE}-${7155243}"
+        JENKINS_API_TOKEN = credentials("1195ad75c7c27334fa10ee3f64c0de59d9")
+
+    }
     stages{
         stage("Cleanup Workspace"){
             steps {
@@ -38,6 +48,21 @@ pipeline{
                 script {
                     withSonarQubeEnv(credentialsId: 'sonarqube') {
                         sh "mvn sonar:sonar"
+                    }
+                }
+            }
+
+        }
+        stage("Build & Push Docker Image") {
+            steps {
+                script {
+                    docker.withRegistry('',docker-token) {
+                        docker_image = docker.build "${suthpick}"
+                    }
+
+                    docker.withRegistry('',docker-token) {
+                        docker_image.push("${RELEASE}")
+                        docker_image.push('latest')
                     }
                 }
             }
