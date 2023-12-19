@@ -4,16 +4,7 @@ pipeline{
         jdk 'Java17'
         maven 'Maven3'
     }
-    environment {
-        APP_NAME = "complete-prodcution-e2e-pipeline"
-        RELEASE = "1.0.0"
-        DOCKER_USER = "subbuengineering"
-        DOCKER_PASS = 'subbu@143!'
-        IMAGE_NAME = "${subbuengineering}" + "/" + "${docker-jenkins}"
-        IMAGE_TAG = "${RELEASE}-${7155243}"
-        JENKINS_API_TOKEN = credentials("jenkins-api-token")
-
-    }
+    
     stages{
         stage("Cleanup Workspace"){
             steps {
@@ -42,23 +33,9 @@ pipeline{
             }
 
         }
-        stage("Build & Push Docker Image") {
-            steps {
-                script {
-                    docker.withRegistry('',subbu@143!) {
-                        docker_image = docker.build "${suthpick}"
-                    }
-
-                    docker.withRegistry('',docker-token) {
-                        docker_image.push("${RELEASE}")
-                        docker_image.push('latest')
-                    }
-                }
+         }
             }
 
-        }
-            }
-}
 
                  
             
