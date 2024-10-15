@@ -12,7 +12,7 @@ pipeline{
             }
             stage("checkout to Scm"){
                   steps{
-                        git: 'branch = "CICD-DEMO" , credentialsId = "subbramritgithub" , url = https://github.com/subbramritgithub/complete-prodcution-e2e-pipeline.git'
+                        git branch: "CICD-DEMO" , credentialsId: "subbramritgithub" , url: "https://github.com/subbramritgithub/complete-prodcution-e2e-pipeline.git"
                   }
             }
       
