@@ -15,6 +15,11 @@ pipeline{
                         git branch: "CICD-DEMO" , credentialsId: "subbramritgithub" , url: "https://github.com/subbramritgithub/complete-prodcution-e2e-pipeline.git"
                   }
             }
+            stage("build application"){
+                  steps{
+                        sh 'mvn compile'
+                  }
+            }
       
       }
 }
