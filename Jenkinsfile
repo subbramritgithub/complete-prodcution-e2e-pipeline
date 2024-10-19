@@ -20,6 +20,11 @@ pipeline{
                         bat "mvn clean package"
                   }
             }
+            stage("test application"){
+                  steps {
+                        sh "mvn test"
+                  }
+            }
       
       }
 }
