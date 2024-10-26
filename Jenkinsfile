@@ -7,7 +7,7 @@ pipeline{
       environment {
         APP_NAME = "glanza-app"
         RELEASE = "1.0.0"
-        DOCKER_USER = "subbuengineering"
+        DOCKER_USER = "subbramr@gmail.com"
         DOCKER_PASS = 'docker-login'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
