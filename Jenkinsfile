@@ -5,9 +5,9 @@ pipeline{
             maven 'maven3'
       }
       environment {
-        APP_NAME = "glanza-app"
-        RELEASE = "1.0.0"
-        DOCKER_USER = "subbramr@gmail.com"
+        APP_NAME = "complete-productions-app"
+        RELEASE = "1.0.1"
+        DOCKER_USER = "subbuengineering"
         DOCKER_PASS = 'docker-login'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
