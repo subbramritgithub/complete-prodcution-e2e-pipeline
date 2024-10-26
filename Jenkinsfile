@@ -8,7 +8,7 @@ pipeline{
         APP_NAME = "glanza-app"
         RELEASE = "1.0.0"
         DOCKER_USER = "subbuengineering"
-        DOCKER_PASS = 'dockerhub'
+        DOCKER_PASS = 'docker-login'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
         JENKINS_API_TOKEN = credentials("jenkins-api-token")
