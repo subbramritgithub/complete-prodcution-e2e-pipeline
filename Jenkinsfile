@@ -59,16 +59,19 @@ pipeline{
 
       
        }
-            stage("Trivy Scan") {
-            steps {
-                script {
-		   sh ('docker run -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image dmancloud/complete-prodcution-e2e-pipeline:1.0.0-22 --no-progress --scanners vuln  --exit-code 0 --severity HIGH,CRITICAL --format table')
-                }
-            }
+           stage("Trivy Scan") {
+    steps {
+        script {
+            // Run the Trivy scan using Docker on Windows
+            bat 'docker run aquasec/trivy image subbuengineering/complete-productions-app:latest --no-progress --scanners vuln --exit-code 0 --severity HIGH,CRITICAL --format table'
+        }
+    }
+}
+
 
         }
       }
-}
+
 
 
       
