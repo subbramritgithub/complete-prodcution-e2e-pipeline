@@ -59,14 +59,23 @@ pipeline{
 
       
        }
-           stage("Trivy Scan") {
-    steps {
-        script {
-            // Run the Trivy scan using Docker on Windows
-            bat 'docker run aquasec/trivy image subbuengineering/complete-productions-app:latest --no-progress --scanners vuln --exit-code 0 --severity HIGH,CRITICAL --format table'
+          stage("Trivy Scan") {
+            steps {
+                script {
+		   bat 'docker run --rm -v C:/trivy-cache:/root/.cache/ -v //./pipe/docker_engine://./pipe/docker_engine aquasec/trivy image subbuengineering/complete-productions-app:latest --no-progress --scanners vuln --exit-code 0 --severity HIGH,CRITICAL --format table'
+                }
+            }
+
         }
-    }
-}
+            tage ('Cleanup Artifacts') {
+            steps {
+                script {
+                    bat "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    bat "docker rmi ${IMAGE_NAME}:latest"
+                }
+            }
+        }
+	  
 
 
         }
